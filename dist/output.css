@@ -24,7 +24,29 @@
 ::after {
   --tw-content: '';
 }
+@keyframes sparkle {
+  0% {
+    color: #8bc34a; /* Warna hijau muda */
+    text-shadow: 0 0 5px #8bc34a, 0 0 10px #8bc34a, 0 0 20px #8bc34a;
+  }
+  50% {
+    color: #aed581; /* Warna hijau muda yang sedikit lebih terang */
+    text-shadow: 0 0 5px #aed581, 0 0 10px #aed581, 0 0 20px #aed581;
+  }
+  100% {
+    color: #8bc34a; /* Kembali ke warna hijau muda awal */
+    text-shadow: 0 0 5px #8bc34a, 0 0 10px #8bc34a, 0 0 20px #8bc34a;
+  }
+}
 
+.sparkling-container {
+  text-align: center; /* Pusatkan teks di dalam div */
+}
+
+.sparkling-text {
+  display: inline-block; /* Agar animasi berjalan dengan baik */
+  animation: sparkle 2s infinite;
+}
 /*
 1. Use a consistent sensible line-height in all browsers.
 2. Prevent adjustments of font size after orientation changes in iOS.
@@ -504,6 +526,49 @@ Ensure the default browser behavior of the `hidden` attribute.
   .container {
     max-width: 1320px;
   }
+}
+/* Toggle Button Styles */
+.toggle-container {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-label {
+  cursor: pointer;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 20px;
+}
+
+.toggle-circle {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Dark Mode */
+.dark-mode .toggle-switch {
+  background-color: #333;
+}
+
+.dark-mode .toggle-circle {
+  transform: translateX(20px);
+}
+
+/* Text Styles */
+.toggle-text {
+  margin: 0 8px;
 }
 
 .fixed {
@@ -1103,6 +1168,10 @@ body {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+#dark-toggle:checked ~ label div.toggle-circle {
+  --tw-translate-x: 0.75rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
 @-webkit-keyframes pulse {
   50% {
     opacity: .5;
